@@ -5,7 +5,7 @@ namespace catalog.Interfaces
    {
       Task<IEnumerable<Item>> GetItems();
 
-      Task<Item> GetItemById(int ItemId);
+      Task<Item> GetItemById(Guid ItemId);
 
       Task CreateItem(Item item);
    }

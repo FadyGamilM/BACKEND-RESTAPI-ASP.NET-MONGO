@@ -1,5 +1,6 @@
  using catalog.Interfaces;
 using catalog.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 namespace catalog.Repositories
 {
@@ -15,19 +16,22 @@ namespace catalog.Repositories
          itemsCollection = database.GetCollection<Item>(collectionName);
       }
 
-      public Task CreateItem(Item item)
+      public async Task CreateItem(Item item)
       {
-         throw new NotImplementedException();
+         await this.itemsCollection.InsertOneAsync(item);
       }
 
-      public Task<Item> GetItemById(int ItemId)
+      public async Task<Item> GetItemById(Guid ItemId)
       {
-         throw new NotImplementedException();
+         var item = await this.itemsCollection.Find<Item>(item => item.Id == ItemId).FirstOrDefaultAsync();
+         return item;
       }
 
-      public Task<IEnumerable<Item>> GetItems()
+
+      public async Task<IEnumerable<Item>> GetItems()
       {
-         throw new NotImplementedException();
+         var items = await this.itemsCollection.Find(item => true).ToListAsync();
+         return items;
       }
    }
 }

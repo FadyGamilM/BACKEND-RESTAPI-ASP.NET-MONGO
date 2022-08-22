@@ -1,3 +1,4 @@
+using AutoMapper;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
 using catalog.Interfaces;
@@ -32,6 +33,7 @@ BsonSerializer.RegisterSerializer(
     )
 );
 builder.Services.AddScoped<IItemRepo, ItemRepo>();
+builder.Services.AddAutoMapper(typeof(Program));
 /* -------------------------------------------------------------------------- */
 
 var app = builder.Build();
