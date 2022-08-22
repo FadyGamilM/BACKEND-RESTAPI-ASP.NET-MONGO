@@ -11,6 +11,8 @@ namespace catalog.Profiles
          CreateMap<ReadItemDto, Item>();
          CreateMap<Item, CreateItemDto>();
          CreateMap<Item, ReadItemDto>();
+         CreateMap<Item, UpdateItemDto>();
+         CreateMap<UpdateItemDto, Item>();
       }
    }
 }

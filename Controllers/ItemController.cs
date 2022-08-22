@@ -42,5 +42,31 @@ namespace catalog.Controllers
          await this._itemRepo.CreateItem(this._mapper.Map<Item>(itemDto));
          return Ok("created");
       }
+
+      [HttpPut("{Id}")]
+      public async Task<IActionResult> UpdateItem ([FromBody] UpdateItemDto itemDto, [FromRoute] Guid Id)
+      {
+         var existingItem = await this._itemRepo.GetItemById(Id);
+         if(existingItem == null){
+            return NotFound();
+         }
+         var updatedItem = existingItem with {
+            Name = itemDto.Name,
+            Price = itemDto.Price
+         };
+         await this._itemRepo.UpdateItem(updatedItem, Id);
+         return Ok("Updated");
+      }
+
+      [HttpDelete("{Id}")]
+      public async Task<IActionResult> DeleteItem ([FromRoute] Guid Id)
+      {
+         var existingItem = await this._itemRepo.GetItemById(Id);
+         if (existingItem == null){
+            return NotFound();
+         }
+         await this._itemRepo.DeleteItem(Id);
+         return Ok("Deleted");
+      }
    }
 }

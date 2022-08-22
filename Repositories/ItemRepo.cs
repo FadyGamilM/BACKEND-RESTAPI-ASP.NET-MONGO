@@ -21,6 +21,11 @@ namespace catalog.Repositories
          await this.itemsCollection.InsertOneAsync(item);
       }
 
+      public async Task DeleteItem(Guid ItemID)
+      {
+         await this.itemsCollection.DeleteOneAsync(item => item.Id == ItemID);
+      }
+
       public async Task<Item> GetItemById(Guid ItemId)
       {
          var item = await this.itemsCollection.Find<Item>(item => item.Id == ItemId).FirstOrDefaultAsync();
@@ -32,6 +37,11 @@ namespace catalog.Repositories
       {
          var items = await this.itemsCollection.Find(item => true).ToListAsync();
          return items;
+      }
+
+      public async Task UpdateItem(Item item, Guid itemID)
+      {
+         await this.itemsCollection.ReplaceOneAsync(existingItem => existingItem.Id == itemID, item);
       }
    }
 }

@@ -8,5 +8,7 @@ namespace catalog.Interfaces
       Task<Item> GetItemById(Guid ItemId);
 
       Task CreateItem(Item item);
+      Task UpdateItem(Item item, Guid itemId);
+      Task DeleteItem(Guid ItemID);
    }
 }
