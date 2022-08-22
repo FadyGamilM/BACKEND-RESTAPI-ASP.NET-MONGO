@@ -43,3 +43,6 @@ F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\
 F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\catalog\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
 F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\catalog\bin\Debug\net6.0\AutoMapper.dll
 F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\catalog\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\catalog\bin\Debug\net6.0\HealthChecks.MongoDb.dll
+F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\catalog\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+F:\__111 COMPUTER SCIENCE\4th CSE 2022\dotnet\dev\BACKEND-RESTAPI-ASP.NET-MONGO\catalog\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
