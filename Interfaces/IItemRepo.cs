@@ -7,6 +7,6 @@ namespace catalog.Interfaces
 
       Task<Item> GetItemById(int ItemId);
 
-      Task<bool> CreateItem(Item item);
+      Task CreateItem(Item item);
    }
 }
