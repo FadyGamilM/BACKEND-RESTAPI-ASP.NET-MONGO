@@ -6,7 +6,7 @@ using catalog.Repositories;
 using catalog.Configurations;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
-
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -37,7 +37,12 @@ BsonSerializer.RegisterSerializer(
 builder.Services.AddScoped<IItemRepo, ItemRepo>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddHealthChecks()
-                       .AddMongoDb(mongoDbSettings.ConnectionString, name: "mongodb", timeout: TimeSpan.FromSeconds(3));
+                       .AddMongoDb(
+                            mongoDbSettings.ConnectionString, 
+                            name: "mongodb", 
+                            timeout: TimeSpan.FromSeconds(3),
+                            tags: new[] {"ready"}
+                        );
 /* -------------------------------------------------------------------------- */
 
 var app = builder.Build();
@@ -56,6 +61,12 @@ app.UseAuthorization();
 
 
 app.MapControllers();
-app.MapHealthChecks("/health-check");
+app.MapHealthChecks("/health-check/ready", new HealthCheckOptions {
+    Predicate = (ckeck) => ckeck.Tags.Contains("ready"),
+});
+
+app.MapHealthChecks("/health-check/live", new HealthCheckOptions {
+    Predicate = (_) => false,
+});
 
 app.Run();
